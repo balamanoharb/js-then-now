@@ -1,0 +1,130 @@
+# Course Link
+- https://frontendmasters.com/courses/javascript-basics/introduction/
+- Book - - https://github.com/getify/You-Dont-Know-JS/tree/master/up%20%26%20going
+
+# Author 
+
+- Kyle Simpson - open web evangelist
+- a full time teacher
+
+# Author's Work
+
+- https://speakerdeck.com/getify
+- https://github.com/getify/LABjs
+- https://github.com/getify/grips
+- https://github.com/getify/asynquence
+
+# Some userful links
+
+- http://jsforcats.com/
+- https://eloquentjavascript.net/
+
+# Up & Going
+
+## What is code ?
+
+- text that humans can understand (high level language)
+- this code is processed by compiler or interpreter and converted to byte code (one's and zero's) 
+- this byte code is what computer can understand
+
+> we are basically writing code for developers
+
+## Statements
+
+```
+b = 21;
+a = b * 2;
+```
+
+## Expression
+
+- each individual thing that can be used standalone is an expression
+- when an expression is used in a separate statement it's called expression statements
+- all function calls falls into this character
+- try to identify all the expressions in the below statement
+
+```
+a = b * 2 + foo(c * 5)
+```
+
+## Program Execution
+
+- Compiled or interpreted
+- javascript is compiled for errors first. It captures the syntax errors first.
+- Then it interprets the programm line by line if syntax is ok.
+
+## Operators
+
+- just the usual stuff.
+- for the complete list refer mdn
+
+## Values and Types
+
+- type is an intrinsic behavior of how a value is represented.
+- javascript and other interpreted languages do not have types for variables instead the types are defined for the values.
+- converting from one type to another can be explicity by their specific methods
+    - if it is implicit it is called coersion
+
+## Code Comment
+
+- single line
+- multi-line comments
+- it can be placed literally anywhere
+- for example
+
+```
+a = /*
+  42 is the meaning
+  of life
+*/ 42;
+```
+
+## variables and Blocks
+
+- variables should always be formally declared
+- what is a block
+
+## Conditional Statements
+
+```
+if( expression ) {
+
+}
+```
+
+- the expression is always converted to true or false. This happens when the expression doesn't directly evaluate to true or false
+- this conversion is based on falsy and truthy values
+- these are the only falsy values in javascript
+    - 0
+    - NaN
+    - ""
+    - false
+    - null
+    - undefined
+- there is a special operator called **void** which makes any value undefined
+
+## Loops
+
+- for loop
+
+```
+for( /* Initialization clause - expression*/ ; /* Conditional clause */; /* Update Clause*/
+)
+
+// conceptually the above loop will run for ever not becuase the condition evaluates to true always but
+// there is no condtion that fails
+```
+
+- while loop
+
+## functions
+
+- a bunch of Statements grouped together logically that can be called whenever we want
+- **toFixed** function is often very useful.
+
+> Whatever coding style you follow be consistent through out the project.
+> like double quotes throghout for strings. always having semi colons etc.
+
+- what is the difference between parameters and arguments ?
+    - when you declare variables in function definition it's parameters
+    - when you call the function its called arguments

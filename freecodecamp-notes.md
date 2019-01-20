@@ -76,21 +76,6 @@ JavaScript recognizes six primitive (immutable) data types: Boolean, Null, Undef
 - console.clear()
 - typeof operator
 
-### Truthy and Falsy values
-
-#### Falsy Values
-
-- false
-- 0
-- "" (an empty string)
-- NaN
-- undefined
-- null
-
-#### Truthy Values
-
-- Everything except falsy values are true
-
 ### Common Mistakes
 
 - variable name mis-spell
@@ -191,8 +176,10 @@ obj1 instanceof MyObjectConstructor;
 - hasOwnProperty
 
 ```
-myObj1.hasOwnProperty(propName)
+myObj1.hasOwnProperty(propName)  //returns true or false
 ```
+
+### Inheritance
 
 - prototype property on constructor function. keys added to this are common to all objects created by the constructor
 
@@ -234,3 +221,118 @@ let beagle = new Dog("Snoopy");
 Dog.prototype.isPrototypeOf(beagle)
 ```
 - Every object has prototypes except a few. So prototype itself can have prototype. Object.prototype is the super prototype. For eg: hasOwnProperty is part of Object.prototype
+
+- Object.create(thePrototypeObject)  - creates a new Object and sets the prototype of the newly created object to thePrototypeObject
+
+```
+function Animal() { }
+
+Animal.prototype = {
+  constructor: Animal,
+  eat: function() {
+    console.log("nom nom nom");
+  }
+};
+
+function Dog() { }
+
+// Add your code below this line
+Dog.prototype = Object.create(Animal.prototype);
+
+let beagle = new Dog();
+beagle.eat();  // Should print "nom nom nom"
+```
+
+- When an object inherits its prototype from another object, it also inherits the supertype's constructor property.
+
+```
+function Bird() { }
+Bird.prototype = Object.create(Animal.prototype);
+let duck = new Bird();
+duck.constructor // function Animal(){...}
+```
+
+- should set the constructor manually
+
+```
+Bird.prototype.constructor = Bird;
+duck.constructor // function Bird(){...}
+```
+
+- an object can inherit its behavior (methods) from another object by cloning its prototype object:
+
+```
+ChildObject.prototype = Object.create(ParentObject.prototype);
+```
+
+- Then the ChildObject received its own methods by chaining them onto its prototype:
+
+```
+ChildObject.prototype.methodName = function() {...};
+```
+
+- methods defined on parent prototype can be overridden
+
+- mixins
+
+For unrelated objects, it's better to use mixins. A mixin allows other objects to use a collection of functions.
+
+```
+let flyMixin = function(obj) {
+  obj.fly = function() {
+    console.log("Flying, wooosh!");
+  }
+};
+```
+
+The flyMixin takes any object and gives it the fly method.
+
+```
+let bird = {
+  name: "Donald",
+  numLegs: 2
+};
+
+let plane = {
+  model: "777",
+  numPassengers: 524
+};
+
+flyMixin(bird);
+flyMixin(plane);
+```
+
+### Private Properties
+
+```
+function Bird() {
+  let hatchedEgg = 10; // private property
+
+  this.getHatchedEggCount = function() { // publicly available method that a bird object can use
+    return hatchedEgg;
+  };
+}
+let ducky = new Bird();
+ducky.getHatchedEggCount(); // returns 10
+```
+
+### IIFE (immediately invoked function expression)
+
+- grouping similar functions into modules
+
+```javascript
+let motionModule = (function () {
+  return {
+    glideMixin: function (obj) {
+      obj.glide = function() {
+        console.log("Gliding on the water");
+      };
+    },
+    flyMixin: function(obj) {
+      obj.fly = function() {
+        console.log("Flying, wooosh!");
+      };
+    }
+  }
+}) (); 
+```

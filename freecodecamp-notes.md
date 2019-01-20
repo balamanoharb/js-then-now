@@ -336,3 +336,36 @@ let motionModule = (function () {
   }
 }) (); 
 ```
+
+## Functional Programming
+
+Functional programming is about:
+
+1) Isolated functions - there is no dependence on the state of the program, which includes global variables that are subject to change
+
+2) Pure functions - the same input always gives the same output
+
+3) Functions with limited side effects - any changes, or mutations, to the state of the program outside the function are carefully controlled
+
+Functions that can be assigned to a variable, passed into another function, or returned from another function just like any other normal value, are called first class functions. In JavaScript, all functions are first class functions.
+
+The functions that take a function as an argument, or return a function as a return value are called higher order functions.
+
+When the functions are passed in to another function or returned from another function, then those functions which gets passed in or returned can be called a lambda.
+
+- In functional programming one should never modify/mutate the inputs causing side effects. This results in pure functions.
+- A function should never be dependant on any external factors like global variable. Inputs should always be passed. It should be independent.
+
+1) Don't alter a variable or object - create new variables and objects and return them if need be from a function.
+
+2) Declare function arguments - any computation inside a function depends only on the arguments, and not on any global object or variable.
+
+functions
+
+- forEach
+- map
+- filter
+- slice
+- splice
+- concat
+

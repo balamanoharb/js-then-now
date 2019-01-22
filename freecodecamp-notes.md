@@ -367,5 +367,9 @@ functions
 - filter
 - slice
 - splice
-- concat
+- concat - returns a new array
+- every
+- some
+
+### Currying and Partial Applications
 
